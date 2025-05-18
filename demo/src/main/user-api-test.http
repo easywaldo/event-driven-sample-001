@@ -1,0 +1,20 @@
+### 유저 등록
+POST http://localhost:8080/users
+Content-Type: application/json
+
+[
+  {
+    "name": "John Doe",
+    "email": "john.doe@example.com"
+  },
+  {
+    "name": "Easywaldo",
+    "email": "easywaldo@example.com"
+  }
+]
+
+### 모든 유저 조회
+GET http://localhost:8080/users
+
+### 특정 유저 조회
+GET http://localhost:8080/users/2

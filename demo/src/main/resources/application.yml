@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: demo
+  r2dbc:
+    url: r2dbc:mysql://localhost:3306/demo?useSSL=false
+    username: user
+    password: password
+    pool:
+      max-size: 10
+      initial-size: 5
+      max-idle-time: 30s
+      validation-query: SELECT 1
+  #  datasource:
+#    url: jdbc:mysql://mysql-container:3306/demo?useSSL=false
+#    username: user
+#    password: password
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: auto
+
