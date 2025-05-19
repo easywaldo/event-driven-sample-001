@@ -18,3 +18,30 @@ GET http://localhost:8080/users
 
 ### 특정 유저 조회
 GET http://localhost:8080/users/2
+
+
+### 작가 등록
+POST http://localhost:8080/api/authors
+Content-Type: application/json
+
+{
+  "bookTitle": "The Great Gatsby",
+  "authorName": "F. Scott Fitzgerald"
+}
+
+
+### 작가 조회
+GET http://localhost:8080/api/authors/1
+
+
+### 도서 등록
+POST http://localhost:8080/api/books
+Content-Type: application/json
+
+{
+  "bookTitle": "The Great Gatsby",
+  "authorId": 1
+}
+
+### 특정 도서 조회
+GET http://localhost:8080/api/books/11
