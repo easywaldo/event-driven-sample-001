@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import java.awt.print.Book
 
 
 @RestController
@@ -38,7 +37,7 @@ class BookController(private val bookService: BookService) {
     @GetMapping
     fun getBooksWithAuthor(
         @RequestParam(value = "lastId", defaultValue = "0") lastId: Long?,  // 커서: 마지막 조회된 책의 ID
-        @RequestParam(value = "limit", defaultValue = "10") limit: Int
+        @RequestParam(value = "limit", defaultValue = "10") limit: Long
     ): Flux<BookWithAuthorDto?> { // 페이지 크기
         return bookService.getBooksWithAuthorCursor(lastId, limit)
     }

@@ -52,8 +52,9 @@ class BookService(
     }
 
     // Book 조회 (커서 기반 페이지네이션) - Author 정보 포함
-    fun getBooksWithAuthorCursor(lastId: Long?, limit: Int): Flux<BookWithAuthorDto?> {
-        return bookRepository.findByIdGreaterThanOrderByIdAsc(lastId, limit)
+    fun getBooksWithAuthorCursor(lastId: Long?, limit: Long): Flux<BookWithAuthorDto?> {
+        return bookRepository.findByIdLessThanOrderByIdDesc(lastId)
+            .take(limit)
             .flatMap({ book ->
                 authorService.getAuthorById(book.authorId!!)
                     .map(Function { author: AuthorEntity? ->
