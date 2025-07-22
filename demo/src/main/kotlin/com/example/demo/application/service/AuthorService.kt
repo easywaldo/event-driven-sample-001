@@ -20,4 +20,8 @@ class AuthorService(private val authorRepository: AuthorRepository) {
     fun getAuthorById(id: Long): Mono<AuthorEntity?> {
         return authorRepository.findById(id)
     }
+
+    fun getAllAuthors(): Mono<List<AuthorEntity>> {
+        return authorRepository.findAll().collectList()
+    }
 }

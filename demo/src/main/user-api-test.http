@@ -48,3 +48,6 @@ GET http://localhost:8080/api/books/11
 
 ### 모든 도서 조회
 GET http://localhost:8080/api/books?lastId=5&limit=4
+
+### 모든 작가 조회
+GET http://localhost:8080/api/authors

@@ -27,6 +27,7 @@ extra["springGrpcVersion"] = "0.8.0"
 dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-webflux")
+    implementation("org.springframework.boot:spring-boot-starter-logging")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("io.grpc:grpc-services")
     implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")

@@ -27,4 +27,9 @@ class AuthorController(private val authorService: AuthorService) {
     fun getAuthor(@PathVariable id: Long): Mono<AuthorEntity?> {
         return authorService.getAuthorById(id)
     }
+
+    @GetMapping
+    fun getAllAuthors(): Mono<List<AuthorEntity>> {
+        return authorService.getAllAuthors()
+    }
 }

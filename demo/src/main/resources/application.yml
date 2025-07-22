@@ -2,7 +2,7 @@ spring:
   application:
     name: demo
   r2dbc:
-    url: r2dbc:mysql://localhost:3306/demo?useSSL=false
+    url: r2dbc:mysql://localhost:3306/demo?useSSL=false&logging=DEBUG
     username: user
     password: password
     pool:
@@ -15,7 +15,21 @@ spring:
 #    username: user
 #    password: password
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: auto
 
+logging:
+  level:
+    root: DEBUG
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: INFO
+    io.r2dbc.mysql: DEBUG
+    io.r2dbc.spi: OFF
+    reactor.netty: OFF
+    javax.management.remote.rmi: OFF
+    sun.rmi.transport.tcp: OFF
+    sun.rmi.loader: OFF
+    io.netty: OFF
