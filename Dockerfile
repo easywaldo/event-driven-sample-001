@@ -2,16 +2,13 @@
 FROM gradle:8.7.0-jdk21 AS builder
 WORKDIR /app
 
-# Gradle Wrapper와 설정/의존 캐시 최적화
-COPY gradlew gradle/ settings.gradle* build.gradle* gradle.properties /app/
-RUN chmod +x ./gradlew
+ARG JAR_FILE=build/libs/*.jar
 
-# 실제 모듈만 복사
-COPY demo /app/demo
+COPY ${JAR_FILE} app.jar
 
 # demo 모듈에서 빌드
-WORKDIR /app/demo
-RUN ../gradlew --no-daemon clean build -x test
+# WORKDIR /app/demo
+# RUN ../gradlew --no-daemon clean build -x test
 
 # 2. 런타임 이미지
 FROM eclipse-temurin:21-jre
