@@ -1,5 +1,5 @@
 # 1. 빌드 이미지 (Gradle 사용)
-FROM gradle:8.2.1-jdk21 AS build
+FROM gradle:8.7.0-jdk21 AS builder
 WORKDIR /app
 COPY . .
 RUN gradle build --no-daemon
