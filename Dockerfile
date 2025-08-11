@@ -1,5 +1,5 @@
 # 1) 빌드 스테이지
-FROM gradle:8.7.0-jdk21 AS builder
+FROM gradle:8.7.0-jdk17 AS builder
 
 WORKDIR /app/demo
 
