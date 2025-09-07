@@ -54,6 +54,13 @@ dependencies {
 
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:mysql")
+
+
+    implementation(platform("io.grpc:grpc-bom:1.72.0"))
+    implementation("io.grpc:grpc-netty-shaded")
+    implementation("io.grpc:grpc-stub")
+    implementation("io.grpc:grpc-protobuf")
+    runtimeOnly("io.grpc:grpc-census") // ← 이게 있어야 InternalCensusStatsAccessor가 로드됨
 }
 
 dependencyManagement {
