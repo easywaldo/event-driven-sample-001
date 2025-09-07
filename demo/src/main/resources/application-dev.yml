@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: demo
+  r2dbc:
+    url: r2dbc:mysql://app@unix/demo?unixSocket=/cloudsql/$secure-bolt-468507-t7:asia-northeast3:easywadlodb01
+    username: dev
+    password: rlekflqk1!Kt01
+    pool:
+      max-size: 10
+      initial-size: 5
+      max-idle-time: 30s
+      validation-query: SELECT 1
+
+logging:
+  level:
+    root: INFO
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: INFO
+    io.r2dbc.mysql: DEBUG
+    io.r2dbc.spi: OFF
+    reactor.netty: OFF
+    javax.management.remote.rmi: OFF
+    sun.rmi.transport.tcp: OFF
+    sun.rmi.loader: OFF
+    io.netty: OFF

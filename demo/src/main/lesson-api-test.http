@@ -1,0 +1,24 @@
+### 수강생 등록
+POST http://localhost:8080/api/lessons/students
+Content-Type: application/json
+
+{
+  "email": "nikini@naver.com",
+  "name": "장미선",
+  "password": "1234"
+}
+
+
+### 수강생 조회
+GET http://localhost:8080/api/lessons/students
+
+
+### 레슨계획등록
+POST http://localhost:8080/api/lessons/plans
+Content-Type: application/json
+
+{
+  "studentId": 1,
+  "lessonStart": "2025-09-01T15:00:00",
+  "lessonEnd": "2025-09-01T16:00:00"
+}
