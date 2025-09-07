@@ -1,9 +1,31 @@
+#steps:
+#  - name: gcr.io/k8s-skaffold/pack
+#    args:
+#      - build
+#      - gcr.io/secure-bolt-468507-t7/app
+#      - --builder=gcr.io/buildpacks/builder:google-22
+#      - --path=.
+#images:
+#  - gcr.io/secure-bolt-468507-t7/app
+
 steps:
-  - name: gcr.io/k8s-skaffold/pack
+  # 1) Build
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-t", "gcr.io/secure-bolt-468507-t7/github.com/easywaldo/event-driven-sample-001:$COMMIT_SHA", "."]
+  # 2) Push
+  - name: gcr.io/cloud-builders/docker
+    args: ["push", "gcr.io/secure-bolt-468507-t7/github.com/easywaldo/event-driven-sample-001:$COMMIT_SHA"]
+  # 3) Deploy to Cloud Run
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    entrypoint: gcloud
     args:
-      - build
-      - gcr.io/secure-bolt-468507-t7/app
-      - --builder=gcr.io/buildpacks/builder:google-22
-      - --path=.
+      - run
+      - deploy
+      - myapp
+      - --image=gcr.io/secure-bolt-468507-t7/github.com/easywaldo/event-driven-sample-001:$COMMIT_SHA
+      - --region=asia-northeast3
+      - --platform=managed
+      - --allow-unauthenticated
+      - --port=8080
 images:
-  - gcr.io/secure-bolt-468507-t7/app
+  - gcr.io/secure-bolt-468507-t7/github.com/easywaldo/event-driven-sample-001:$COMMIT_SHA
