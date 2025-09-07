@@ -2,7 +2,7 @@ spring:
   application:
     name: demo
   r2dbc:
-    url: r2dbc:mysql://app@unix/demo?unixSocket=/cloudsql/secure-bolt-468507-t7:asia-northeast3:easywadlodb01
+    url: r2dbc:mysql://dev@unix/demo?unixSocket=/cloudsql/secure-bolt-468507-t7:asia-northeast3:easywadlodb01
     username: dev
     password: rlekflqk1!Kt01
     pool:
