@@ -1,6 +1,11 @@
 # 1) 빌드 스테이지
 FROM gradle:8.7.0-jdk17 AS builder
 
+# UTF-8 환경
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
+ENV JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
+
 WORKDIR /app/demo
 
 # 필요한 파일만 먼저 복사(캐시 최적화)
